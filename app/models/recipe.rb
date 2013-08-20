@@ -5,5 +5,5 @@ class Recipe < ActiveRecord::Base
   has_many :ingredients, :through => :recipe_ingredients
   has_many :directions
 
-  accepts_nested_attributes_for :ingredients, :measurements, :directions
+  accepts_nested_attributes_for :ingredients, :measurements, :recipe_ingredients, :directions
 end
