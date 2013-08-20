@@ -1,0 +1,14 @@
+<p>
+<%= f.label :amount, "Amount" %>
+<%= f.text_field :amount %>
+
+<%= f.fields_for :measurement do |measurement_form| %>
+  <%= measurement_form.label :measurement, "Measurement" %>
+  <%= measurement_form.text_field :name %>
+<% end %>
+
+<%= f.fields_for :ingredient do |ingredients_form| %>
+  <%= ingredients_form.label :name, "Ingredient" %>
+  <%= ingredients_form.text_field :name %>
+<% end %>
+</p>
