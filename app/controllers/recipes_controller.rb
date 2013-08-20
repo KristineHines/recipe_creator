@@ -11,15 +11,20 @@ class RecipesController < ApplicationController
 
   def new
     @recipe = Recipe.new
-    recipe_ingredient = @recipe.recipe_ingredients.build
-    recipe_ingredient.ingredient = @recipe.ingredients.build
-    recipe_ingredient.measurement = @recipe.measurements.build
+
+    5.times do
+      recipe_ingredient = @recipe.recipe_ingredients.build
+      recipe_ingredient.ingredient = @recipe.ingredients.build
+      recipe_ingredient.measurement = @recipe.measurements.build
+    end
+
   end
 
   def create
     @recipe = Recipe.new(recipe_params)
     @recipe.user = current_user
     @recipe.save
+    p @recipe.recipe_ingredients
     redirect_to user_recipe_path(current_user, @recipe)
   end
 
@@ -27,8 +32,8 @@ class RecipesController < ApplicationController
 
   def recipe_params
     params.require(:recipe).permit(:title, 
-      ingredients_attributes: [:id, :name],
-      measurements_attributes: [:id, :name], 
-      recipe_ingredients_attributes: [:id, :ingredient_id, :measurement_id, :user_id, :amount])
+      recipe_ingredients_attributes: [:id, :ingredient_id, :measurement_id, :user_id, :amount,
+      ingredient_attributes: [:id, :name],
+      measurement_attributes: [:id, :name]])
   end
 end

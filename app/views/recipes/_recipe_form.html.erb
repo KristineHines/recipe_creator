@@ -1,21 +1,21 @@
 <%= form_for([:user, @recipe]) do |recipe_form| %>
 
   <%= recipe_form.label :title, "Recipe Title" %>
-  <%= recipe_form.text_field :title %>
+  <%= recipe_form.text_field :title %><br><br>
 
   <%= recipe_form.fields_for :recipe_ingredients do |recipe_ingredients| %>
     <%= recipe_ingredients.label :amount, "Amount" %>
     <%= recipe_ingredients.text_field :amount %>
 
-    <%= recipe_form.fields_for :ingredients do |ingredients_form| %>
-      <%= ingredients_form.label :name, "Ingredient" %>
-      <%= ingredients_form.text_field :name %>
-    <% end %>
-
-    <%= recipe_form.fields_for :measurements do |measurement_form| %>
+    <%= recipe_ingredients.fields_for :measurement do |measurement_form| %>
       <%= measurement_form.label :measurement, "Measurement" %>
       <%= measurement_form.text_field :name %>
     <% end %>
+
+    <%= recipe_ingredients.fields_for :ingredient do |ingredients_form| %>
+      <%= ingredients_form.label :name, "Ingredient" %>
+      <%= ingredients_form.text_field :name %>
+    <% end %><br>
   <% end %>
 
   <%= recipe_form.submit 'Create' %>
