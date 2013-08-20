@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+ruby '2.0.0'
+
 gem 'rails', '~> 4.0.0'
 
 # Bundle edge Rails instead:
@@ -8,7 +10,6 @@ gem 'rails', '~> 4.0.0'
 gem 'pg'
 gem 'devise'
 gem 'rails_12factor', group: :production
-ruby "1.9.3"
 
 
 # Gems used only for assets and not required
