@@ -3,9 +3,12 @@
   <%= f.label :title, "Recipe Title" %>
   <%= f.text_field :title %>
   </p>
+  <div id="ingredient_list">
   <%= f.fields_for :recipe_ingredients do |builder| %>
     <%= render "ingredient_fields", f: builder %>
   <% end %>
+  </div>
+  <%= link_to("Add More Ingredients!", '#', id: "add_ingredient") %>
   <%= f.submit 'Create' %>
 <% end %>
 

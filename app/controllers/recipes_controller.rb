@@ -17,14 +17,12 @@ class RecipesController < ApplicationController
       recipe_ingredient.ingredient = @recipe.ingredients.build
       recipe_ingredient.measurement = @recipe.measurements.build
     end
-
   end
 
   def create
     @recipe = Recipe.new(recipe_params)
     @recipe.user = current_user
     @recipe.save
-    p @recipe.recipe_ingredients
     redirect_to user_recipe_path(current_user, @recipe)
   end
 
